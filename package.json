@@ -8,8 +8,6 @@
     },
     "scripts": {
         "build": "cross-env NODE_ENV=\"development\" TS_NODE_PROJECT=\"tsconfig.json\" webpack --watch",
-        "serve": "nodemon ./dist/backend/index.js",
-        "dev": "concurrently \"npm run build\" \"npm run serve\"",
         "test": "jest",
         "test:watchAll": "jest --watchAll",
         "test:coverage": "jest --coverage"
