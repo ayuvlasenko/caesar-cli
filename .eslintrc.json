@@ -1,0 +1,82 @@
+{
+    "root": true,
+    "parser": "@typescript-eslint/parser",
+    "plugins": [
+        "@typescript-eslint"
+    ],
+    "parserOptions": {
+        "project": ["./tsconfig.json"]
+    },
+    "extends": [
+        "eslint:recommended",
+        "plugin:@typescript-eslint/recommended",
+        "plugin:@typescript-eslint/recommended-requiring-type-checking"
+    ],
+    "ignorePatterns": [".eslintrc.js"],
+    "rules": {
+        "brace-style": ["error", "stroustrup"],
+        "@typescript-eslint/brace-style": ["error", "stroustrup"],
+        "comma-dangle": "off",
+        "@typescript-eslint/comma-dangle": [
+            "error",
+            {
+                "arrays": "always-multiline",
+                "objects": "always-multiline",
+                "imports": "always-multiline",
+                "exports": "always-multiline",
+                "enums": "always-multiline",
+                "generics": "always-multiline",
+                "tuples": "always-multiline"
+            }
+        ],
+        "@typescript-eslint/indent": ["error", 4, { "SwitchCase": 1 }],
+        "quotes": ["error", "double"],
+        "semi": ["error", "always"],
+        "indent": "off"
+    },
+    "overrides": [
+        {
+            "files": "./src/**/*.spec.ts",
+            "plugins": [
+                "@typescript-eslint",
+                "eslint-plugin-jest"
+            ],
+            "extends": [
+                "eslint:recommended",
+                "plugin:@typescript-eslint/recommended",
+                "plugin:@typescript-eslint/recommended-requiring-type-checking",
+                "plugin:jest/recommended"
+            ],
+            "env": {
+                "jest/globals": true
+            }
+        },
+        {
+            "files": "./src/**/*.ts",
+            "excludedFiles": "./src/**/*.spec.ts",
+            "plugins": [
+                "@typescript-eslint",
+                "eslint-plugin-node"
+            ],
+            "extends": [
+                "eslint:recommended",
+                "plugin:@typescript-eslint/recommended",
+                "plugin:@typescript-eslint/recommended-requiring-type-checking",
+                "plugin:node/recommended"
+            ],
+            "rules": {
+                "node/no-unsupported-features/es-syntax": [
+                    "error",
+                    {
+                        "ignores": ["modules"]
+                    }
+                ]
+            }
+        }
+    ],
+    "settings": {
+        "node": {
+            "tryExtensions": [".js", ".jsx", ".ts", ".tsx", ".json"]
+        }
+    }
+}
